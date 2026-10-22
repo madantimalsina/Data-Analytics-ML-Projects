@@ -1,42 +1,40 @@
-# Keras TensorFlow Project Collection
+# Keras/TensorFlow Project Collection
 
-This repository contains a collection of machine learning projects using Keras and TensorFlow, developed by Madan Timalsina. These projects include classification and regression models, using a variety of datasets, along with pre-trained model files.
+A collection of Keras/TensorFlow machine learning projects (classification and regression),
+originally developed as Jupyter notebooks and since reorganized into a runnable Python project.
 
-## Repository Contents
+## Layout
 
-### Jupyter Notebooks
+| Folder | Contents |
+|---|---|
+| [notebooks/](notebooks/README.md) | Original exploratory Jupyter notebooks. |
+| [src/](src/README.md) | Standalone Python scripts converted from the notebooks, runnable from the command line. |
+| [sql/](sql/README.md) | SQL files used for data-selection/preview steps, run against an in-memory SQLite database built from the CSVs. |
+| [data/](data/README.md) | CSV datasets used by the notebooks and scripts. |
+| [models/](models/README.md) | Saved/trained model files. |
 
-1. **KerasTF_Classification_MadanTimalsina.ipynb**: 
-   - A classification project using Keras and TensorFlow, applied to a labeled dataset. The notebook includes steps for data preprocessing, model training, evaluation, and performance analysis.
+## Setup
 
-2. **CA_housing.ipynb**:
-   - A regression project analyzing California housing data, predicting housing prices based on features like location, median income, and number of rooms.
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 
-3. **KerasTF_project_2.ipynb**:
-   - Another project leveraging Keras and TensorFlow for machine learning applications. The specific focus of this project may vary, and details are within the notebook.
+## Running a notebook
 
-4. **KerasTF_Project_MadanTimalsina.ipynb**:
-   - A general project using Keras and TensorFlow, exploring various machine learning techniques and model architectures.
+```bash
+source .venv/bin/activate
+jupyter notebook
+```
 
-5. **KerasTF_Regression_MadanTimalsina.ipynb**:
-   - A regression task focusing on predicting continuous values, using Keras and TensorFlow.
+Then open any file in [notebooks/](notebooks/README.md).
 
-6. **Simple_KerasTF_project_MadanTimalsina.ipynb**:
-   - A simple introductory project using Keras and TensorFlow for building a straightforward model.
+## Running a script
 
-7. **03-Keras-Project-Exercise.ipynb**:
-   - A Keras exercise notebook, possibly a guided project or tutorial on building and training Keras models.
+```bash
+source .venv/bin/activate
+python src/house_price_regression.py --data data/kc_house_data.csv --sql sql/kc_house_price_by_year.sql
+```
 
-### Datasets
-
-- **lending_club_loan_two.csv**: Dataset for a classification project related to loan data, likely used to predict loan outcomes or risk factors.
-- **CA_housing.csv**: Dataset containing California housing data, used in the `CA_housing.ipynb` regression notebook.
-- **cancer_classification.csv**: A dataset for a classification task, likely predicting cancer types or presence based on given features.
-- **fake_reg.csv**: A synthetic regression dataset used for model experimentation and training.
-- **lending_club_info.csv**: Additional information or metadata for the lending club loan dataset.
-- **kc_house_data.csv**: A dataset likely related to house pricing in the Seattle area, containing features for house attributes and pricing.
-
-### Pre-trained Models
-
-- **full_data_project_model.h5**: A pre-trained model file for one of the projects. Can be loaded and used for inference or further fine-tuning.
-- **my_model.h5**: Another pre-trained model, specific to a project within this repository.
+See [src/README.md](src/README.md) for all available scripts and options.
