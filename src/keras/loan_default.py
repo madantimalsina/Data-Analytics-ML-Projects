@@ -5,7 +5,7 @@ large / not committed). Point --data at your own copy to run this end-to-end.
 lending_club_info.csv (the column glossary) is included under data/.
 
 Usage:
-    python src/loan_default.py --data data/lending_club_loan_two.csv
+    python src/keras/loan_default.py --data data/lending_club_loan_two.csv
 """
 from __future__ import annotations
 

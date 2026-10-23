@@ -1,8 +1,8 @@
 """Simple Keras regression on synthetic data (fake_reg.csv).
 
 Usage:
-    python src/simple_regression.py
-    python src/simple_regression.py --data data/fake_reg.csv --epochs 500
+    python src/keras/simple_regression.py
+    python src/keras/simple_regression.py --data data/fake_reg.csv --epochs 500
 """
 from __future__ import annotations
 

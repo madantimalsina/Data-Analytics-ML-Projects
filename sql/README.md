@@ -13,5 +13,6 @@ in-memory SQLite database (table name = CSV filename without extension) and runs
 ## Usage
 
 ```bash
-python src/house_price_regression.py --data data/kc_house_data.csv --sql sql/kc_house_price_by_year.sql
+python src/keras/house_price_regression.py --data data/kc_house_data.csv --sql sql/kc_house_price_by_year.sql
+python src/pytorch/house_price_regression.py --data data/kc_house_data.csv --sql sql/kc_house_price_by_year.sql
 ```

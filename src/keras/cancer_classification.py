@@ -1,8 +1,8 @@
 """Keras binary classification on the breast cancer dataset (cancer_classification.csv).
 
 Usage:
-    python src/cancer_classification.py
-    python src/cancer_classification.py --sql sql/cancer_class_balance.sql
+    python src/keras/cancer_classification.py
+    python src/keras/cancer_classification.py --sql sql/cancer_class_balance.sql
 """
 from __future__ import annotations
 

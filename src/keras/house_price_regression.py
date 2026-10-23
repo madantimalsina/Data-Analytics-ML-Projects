@@ -1,8 +1,11 @@
-"""Keras regression for house price prediction (kc_house_data.csv / CA_housing.csv).
+"""Keras regression for house price prediction (kc_house_data.csv).
+
+Note: data/CA_housing.csv uses a different schema (no "price"/"date"/"zipcode"
+columns) and is not compatible with this script; see data/README.md.
 
 Usage:
-    python src/house_price_regression.py --data data/kc_house_data.csv
-    python src/house_price_regression.py --data data/kc_house_data.csv --sql sql/kc_house_price_by_year.sql
+    python src/keras/house_price_regression.py --data data/kc_house_data.csv
+    python src/keras/house_price_regression.py --data data/kc_house_data.csv --sql sql/kc_house_price_by_year.sql
 """
 from __future__ import annotations
 

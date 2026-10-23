@@ -4,7 +4,7 @@ Datasets used by the notebooks and scripts.
 
 | File | Description |
 |---|---|
-| [CA_housing.csv](CA_housing.csv) | California housing district data (location, income, rooms, median house value). Used by `CA_housing.ipynb`. |
+| [CA_housing.csv](CA_housing.csv) | California housing district data (location, income, rooms, median house value). Note: `CA_housing.ipynb`'s code assumes a `kc_house_data.csv`-style schema (`price`, `date`, `zipcode`, ...) and does not actually match this file's columns (`median_house_value`, `longitude`, `latitude`, ...) — a pre-existing mismatch from the original notebook. |
 | [kc_house_data.csv](kc_house_data.csv) | King County, WA house sale records with price and property features. Used by `KerasTF_SimpleRegression.ipynb` / `house_price_regression.py`. |
 | [cancer_classification.csv](cancer_classification.csv) | Breast cancer diagnostic features with benign/malignant label. Used by `KerasTF_BreastCancer_Classification.ipynb` / `cancer_classification.py`. |
 | [fake_reg.csv](fake_reg.csv) | Synthetic two-feature regression dataset. Used by `Simple_KerasTF_project.ipynb` / `simple_regression.py`. |

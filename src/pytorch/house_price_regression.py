@@ -1,5 +1,8 @@
-"""PyTorch regression for house price prediction (kc_house_data.csv / CA_housing.csv).
+"""PyTorch regression for house price prediction (kc_house_data.csv).
 PyTorch port of src/keras/house_price_regression.py.
+
+Note: data/CA_housing.csv uses a different schema (no "price"/"date"/"zipcode"
+columns) and is not compatible with this script; see data/README.md.
 
 Usage:
     python src/pytorch/house_price_regression.py --data data/kc_house_data.csv
