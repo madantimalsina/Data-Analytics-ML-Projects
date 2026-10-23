@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Validate notebooks are well-formed
+        run: |
+          pip install nbformat
+          python -c "
+          import glob, nbformat
+          for path in glob.glob('notebooks/*.ipynb'):
+              nbformat.read(path, as_version=4)
+              print('OK:', path)
+          "
+
+      - name: Byte-compile all scripts
+        run: python -m py_compile src/keras/*.py src/pytorch/*.py
+
+      - name: Run SQL data-selection queries
+        run: |
+          python -c "
+          import sys
+          sys.path.insert(0, 'src/keras')
+          from db_utils import query_csv
+          print(query_csv('sql/ca_housing_top_price.sql', ['data/CA_housing.csv']))
+          print(query_csv('sql/kc_house_price_by_year.sql', ['data/kc_house_data.csv']))
+          print(query_csv('sql/cancer_class_balance.sql', ['data/cancer_classification.csv']))
+          "
+
+      - name: Smoke test Keras scripts (low epochs)
+        run: |
+          python src/keras/simple_regression.py --epochs 2 --model-out /tmp/smoke_keras_reg.keras
+          python src/keras/house_price_regression.py --data data/kc_house_data.csv --epochs 2
+          python src/keras/cancer_classification.py --epochs 5 --patience 2
+
+      - name: Smoke test PyTorch scripts (low epochs)
+        run: |
+          python src/pytorch/simple_regression.py --epochs 2 --model-out /tmp/smoke_torch_reg.pt
+          python src/pytorch/house_price_regression.py --data data/kc_house_data.csv --epochs 2
+          python src/pytorch/cancer_classification.py --epochs 5 --patience 2
+
+      - name: Check loan_default.py imports cleanly (no lending_club_loan_two.csv in repo)
+        run: |
+          python -c "import sys; sys.path.insert(0, 'src/keras'); import loan_default"
+          python -c "import sys; sys.path.insert(0, 'src/pytorch'); import loan_default"

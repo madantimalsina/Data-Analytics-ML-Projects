@@ -1,5 +1,7 @@
 # Data Analytics & ML Projects
 
+[![CI](https://github.com/madantimalsina/Data-Analytics-ML-Projects/actions/workflows/ci.yml/badge.svg)](https://github.com/madantimalsina/Data-Analytics-ML-Projects/actions/workflows/ci.yml)
+
 A collection of machine learning projects (classification and regression), originally developed as
 Jupyter notebooks and since reorganized into a runnable Python project. Each project is implemented
 in both Keras/TensorFlow and PyTorch.
@@ -40,3 +42,9 @@ python src/pytorch/house_price_regression.py --data data/kc_house_data.csv --sql
 ```
 
 See [src/README.md](src/README.md) for all available scripts and options.
+
+## CI
+
+Every push/PR to `main` runs [`.github/workflows/ci.yml`](.github/workflows/ci.yml), which:
+validates all notebooks parse, byte-compiles every script, runs the SQL data-selection
+queries, and smoke-tests each Keras and PyTorch script end-to-end with a few epochs.
